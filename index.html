@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#5E8F7A" />
+    <title>Family Travel Planner｜家庭旅遊規劃</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a href="./" class="brand">❋ Family Travel Planner</a
+      ><span>把時間留給一起旅行</span>
+    </header>
+    <main id="main">
+      <div id="notice" role="status" aria-live="polite"></div>
+      <section id="hero" class="hero" aria-label="旅程基本資料"></section>
+      <section id="upcoming" class="upcoming" aria-label="行程摘要"></section>
+      <section aria-labelledby="days-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">OUR LITTLE ADVENTURE</p>
+            <h2 id="days-title">每日行程</h2>
+          </div>
+          <span class="muted">走慢一點，也很好</span>
+        </div>
+        <div id="days"></div>
+      </section>
+      <section aria-labelledby="bookings-title">
+        <div class="section-heading">
+          <h2 id="bookings-title">住宿與交通</h2>
+        </div>
+        <div class="two-col">
+          <article class="panel">
+            <div class="section-heading">
+              <h3>住宿</h3>
+              <button data-action="add" data-kind="lodging">＋ 新增住宿</button>
+            </div>
+            <div id="lodging"></div>
+          </article>
+          <article class="panel">
+            <div class="section-heading">
+              <h3>交通</h3>
+              <button data-action="add" data-kind="transport">
+                ＋ 新增交通
+              </button>
+            </div>
+            <div id="transport"></div>
+          </article>
+        </div>
+      </section>
+      <section class="panel" aria-labelledby="budget-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">TRAVEL BUDGET</p>
+            <h2 id="budget-title">預算摘要</h2>
+          </div>
+          <button data-action="add" data-kind="expenses">＋ 新增支出</button>
+        </div>
+        <p class="muted">各幣別分開計算，不進行匯率換算。</p>
+        <div id="budget"></div>
+        <div id="expenses"></div>
+      </section>
+      <section class="panel" aria-labelledby="todos-title">
+        <div class="section-heading">
+          <h2 id="todos-title">出發前，準備好了嗎？</h2>
+          <button data-action="add" data-kind="todos">＋ 新增待辦</button>
+        </div>
+        <div id="todos"></div>
+      </section>
+      <section class="panel" aria-labelledby="tools-title">
+        <h2 id="tools-title">資料備份與工具</h2>
+        <p class="muted">
+          資料只存在這個瀏覽器。更換裝置或清除瀏覽器前，記得先匯出備份；訂位資訊也會包含在備份中。
+        </p>
+        <div class="actions">
+          <button data-action="export">匯出 JSON</button
+          ><button data-action="import">匯入 JSON</button
+          ><button class="danger" data-action="clear">清除所有資料</button
+          ><input
+            id="import-file"
+            type="file"
+            accept="application/json,.json"
+            hidden
+          />
+        </div>
+      </section>
+    </main>
+    <footer>
+      Family Travel Planner · 一起出發，慢慢收藏回憶。<br /><small
+        >單機版 V1 · 資料儲存在此瀏覽器</small
+      >
+    </footer>
+    <dialog id="editor" aria-labelledby="editor-title">
+      <form id="editor-form">
+        <div class="section-heading">
+          <h2 id="editor-title"></h2>
+          <button type="button" data-action="close" aria-label="關閉編輯視窗">
+            ✕
+          </button>
+        </div>
+        <div id="fields" class="form-grid"></div>
+        <p id="form-error" role="alert"></p>
+        <div class="actions form-actions">
+          <button type="button" data-action="close">取消</button
+          ><button type="submit" class="primary">儲存變更</button>
+        </div>
+      </form>
+    </dialog>
+  </body>
+</html>
